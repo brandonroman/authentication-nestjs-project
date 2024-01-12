@@ -35,3 +35,5 @@ You can run these on the command line in the root of your project:
 * `npm run build`: generates a production build
 
 To customize the port and database connection, edit `src/.env` with your details.
+
+Once you have configured `.env` file and ran the project, the `User` entity is going to be generated in database automaticly; this is because `autoLoadEntities` property is enabled in `src/database/database.module.ts`. `Synchronize` property is enabled too.
