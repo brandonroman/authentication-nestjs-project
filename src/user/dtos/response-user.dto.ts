@@ -1,6 +1,19 @@
-import { CreateUserDto } from './create-user.dto';
+import { Exclude, Expose } from 'class-transformer';
 
+@Exclude()
 export class ResponseUserDto {
-  email: string;
-  password: string;
+  @Expose()
+  readonly id: string;
+
+  @Expose()
+  readonly dateCreate: Date;
+
+  @Expose()
+  readonly dateUpdate: Date;
+
+  @Expose()
+  readonly email: string;
+
+  @Expose()
+  readonly password: string;
 }

@@ -1,16 +1,18 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { LoginDto } from '../dtos/login.dto';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/services/user.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private jwtService: JwtService,
+  ) {}
 
-  login(loginDto: LoginDto) {
-    const findUser = this.userService.findByEmail(loginDto.email);
-
-    if (findUser.password != loginDto.password)
-      throw new BadRequestException(`User or password are wrong`);
-    return true;
+  async signUp(email: string, pass: string) {
+    const findUser = await this.userService.findByEmail(email);
+    if (findUser.password !== pass) throw new UnauthorizedException();
+    const payload = { sub: findUser.id, username: findUser.email };
+    return { access_token: await this.jwtService.signAsync(payload) };
   }
 }
