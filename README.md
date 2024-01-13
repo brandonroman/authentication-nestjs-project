@@ -8,13 +8,17 @@ In authentication, when the user successfully logs in using their credentials, a
 
 This project aims to make apps more safe, using sturdy technologies for maximum security.
 
+
 ## Features
+
 * Config Nestjs integrated to configure database connection
 * Database connection configured by default is SQL Server
 * Database consults are handled with Typeorm library
 * Requests and Responses DTO handled with class-validator library
 
+
 ## Installation
+
 You need to install [Node](https://nodejs.org/en/) first. 
 
 You can install [NestJS](https://docs.nestjs.com/) by running next command:
@@ -28,12 +32,38 @@ $ npm install
 ```
 
 
+## Routes
+
+Here are the routes you need to use:
+
+* `/auth` (Post): generates token for registered user
+```bash
+# Request 
+{
+  "email": "email@mail.com",
+  "password": "123456"
+}
+```
+
+* `/user` (Post): creates a new user
+```bash
+# Request
+{
+  "email": "email@mail.com",
+  "password": "123456"
+}
+```
+
+* `/user/get-profile` (Get): gets user token information. You need to call this endpoint setting the previous generated token in header as Bearer Token
+
+
 ## Local Development
+
 You can run these on the command line in the root of your project:
 
 * `npm start`: starts development server
 * `npm run build`: generates a production build
 
-To customize the port and database connection, edit `src/.env` with your details.
+To customize the port, JWT parameters and database connection, edit `src/.env` with your details.
 
 Once you have configured `.env` file and ran the project, the `User` entity is going to be generated in database automaticly; this is because `autoLoadEntities` property is enabled in `src/database/database.module.ts`. `Synchronize` property is enabled too.
