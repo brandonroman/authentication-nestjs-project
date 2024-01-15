@@ -11,7 +11,7 @@ This project aims to make apps more safe, using sturdy technologies for maximum 
 
 ## Features
 
-* Config Nestjs integrated to configure database connection
+* `@nestjs/config` integrated to configure database connection
 * Database connection configured by default is SQL Server
 * Database consults are handled with Typeorm library
 * Requests and Responses DTO handled with class-validator library
