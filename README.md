@@ -21,7 +21,7 @@ This project aims to make apps more safe, using sturdy technologies for maximum 
 
 You need to install [Node](https://nodejs.org/en/) first. 
 
-You can install [NestJS](https://docs.nestjs.com/) by running next command:
+Then, you can install [NestJS](https://docs.nestjs.com/) by running next command:
 ```bash
 $ npm i -g @nestjs/cli
 ```
